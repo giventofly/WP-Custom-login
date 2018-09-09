@@ -1,12 +1,13 @@
 <?php
-//code to add to functions
 
+//code to add to functions (ajaxa call)
 add_action('wp_ajax_my_dologin', 'my_dologin');
 add_action('wp_ajax_nopriv_my_dologin', 'my_dologin');
 function my_dologin(){
         $result= array();
         $nonce = $_POST['nonce'];
         //try to hack?
+        //if all the params are sent and user is not logged in
         if ( is_user_logged_in() || !isset($_POST['section']) ||  !wp_verify_nonce( $nonce,  'clientepage' . date("l")) ) {
           //que é que tas a fazer?
           $result['error'] = 'olhós avioens látraz';
@@ -165,7 +166,7 @@ function my_forget_pwd($email) {
   $message .= __('To reset your password, visit the following address:') . "<br><br>";
   $message .= '<a href="'.esc_url(get_permalink( 11 )) . '?forgotpwd=true&key='.$key.'&value=' .$user_id . '" >'.esc_url(get_permalink( 11 )) . '?forgotpwd=true&key='.$key.'&value=' .$user_id . '</a><br><br>';
 
-  if ( $message && !wp_mail($user_email, '[PIEP] Password Reset Request', $message) ) { return -1 ; }
+  if ( $message && !wp_mail($user_email, ' Password Reset Request', $message) ) { return -1 ; }
   else return true;
 }
 
