@@ -21,7 +21,9 @@
         <a href="#" id='submitme' class='submit'>LOGIN</a>
       </div>
     </div>
-    
+    <!--
+    Option to request password only appears if not looged in and the param (sent by mail) is present
+  -->
     <?php if(!is_user_logged_in() && isset($_GET['forgotpwd'])) { ?>
       <div class="piep-login" >
       <div class="piep-login__content">
